@@ -1,0 +1,11 @@
+Description:
+
+Write a JS program that will ask the 
+user for a value of a variable name m. 
+Then your program
+should ask the user for the value of another variable 
+named n.
+
+Then, add all the integer numbers between m and n
+and output the result into an html page.
+
