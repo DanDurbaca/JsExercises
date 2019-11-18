@@ -1,13 +1,43 @@
 var myHtmlItem = document.getElementById("container");
 
-var myYellowBox = '<div class="box yellowBox"></div>';
-var myGreenBox = '<div class="box greenBox"></div>';
-
 var result ="";
-for(i=0;i<5;i++)
+
+for (lines = 0; lines <10;lines++)
 {
-    result = result + myYellowBox;
-    result = result + myGreenBox;
+    result = result + "<div>";
+    for(i=0;i<10;i++)
+    {
+        if (lines%2===1)
+        {
+            if (i%2==1)
+            {
+                result = result + BuildBox(lines,i,"greenBox");
+            }
+            else
+            {
+                result = result + BuildBox(lines,i,"yellowBox");
+            }
+        }
+        else
+        {
+            if (i%2==0)
+            {
+                result = result + BuildBox(lines,i,"greenBox");
+            }
+            else
+            {
+                result = result + BuildBox(lines,i,"yellowBox");
+            }
+        }
+    }
+    result = result + "</div>";
 }
 myHtmlItem.innerHTML = result;
-//myYellowBox + myGreenBox + myYellowBox + myGreenBox;
+
+function BuildBox(line,col,colorOfBox)
+{
+    var result='<div id="myBox_';
+    result += line +'-'+col;
+    result += '" class="box ' + colorOfBox + '"></div>';
+    return result;
+}
