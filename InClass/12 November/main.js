@@ -36,8 +36,18 @@ myHtmlItem.innerHTML = result;
 
 function BuildBox(line,col,colorOfBox)
 {
-    var result='<div id="myBox_';
-    result += line +'-'+col;
-    result += '" class="box ' + colorOfBox + '"></div>';
+    var idOfThisBox = "myBox_" + line + '-' + col;
+    var result='<div id="'; // add the id of the box
+    result += idOfThisBox; // finish adding the id
+    result += '" class="box ' + colorOfBox + '"'; // add the classes
+    // start building the onClick event for each box
+    // it should result in a string like:
+    // onclick="myBoxWasClicked('green');"
+    result += ' onclick="myBoxWasClicked(';
+    result += "'"+idOfThisBox + "');";
+    result += '"'; // end of the onClick event
+
+    // finish the HTML tag
+    result += '></div>';
     return result;
 }

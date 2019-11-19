@@ -15,25 +15,32 @@
         .greenBox{
             background-color: green;
         }
+
+        .redBox{
+            background-color: red;
+        }
     </style>
 
     
 </head>
 <body>
+    <div id="123" class="box yellowBox" onclick="myBoxWasClicked('123');">
+        </div>
+    <div id="333" class="box greenBox" onclick="myBoxWasClicked('333');">
+        </div>
+        
     <div id="container">
-    <div class="box yellowBox" onclick="myBoxWasClicked();">
-    </div>
-    
-    <div class="box greenBox">
     </div>
 
-    </div>
-
-    <!-- <script src='main.js'></script> -->
+    <script src='main.js'></script> 
     <script>
-    function myBoxWasClicked()
+
+
+    function myBoxWasClicked(givenId)
     {
-        alert("Ohh .. you clicked me !");
+        var myElement = document.getElementById(givenId);
+        myElement.className = "box redBox";
+        //alert("Ohh .. you clicked on " + x);
     }
     
     </script>
