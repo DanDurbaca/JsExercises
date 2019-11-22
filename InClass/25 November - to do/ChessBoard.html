@@ -16,36 +16,26 @@
             background-color: green;
         }
 
-        .redBox{
-            background-color: red;
+        .bombBox{
+            /*  background-color: red;*/
+            background-size: 60px; /* You must set a specified height */
+            background-position: center; /* Center the image */
+            background-image: url("bomb.png");
         }
     </style>
 
     
 </head>
 <body>
-    <div id="123" class="box yellowBox" onclick="myBoxWasClicked('123');">
+    <div id="123" class="box yellowBox" onclick="myBoxWasClicked();">
         </div>
-    <div id="333" class="box greenBox" onclick="myBoxWasClicked('333');">
+    <div id="333" class="box greenBox" onclick="myBoxWasClicked();">
         </div>
         
     <div id="container">
     </div>
 
     <script src='main.js'></script> 
-    <script>
-
-
-    function myBoxWasClicked(givenId)
-    {
-        
-        var myElement = document.getElementById(givenId);
-        myElement.className = "box redBox";
-        alert(event.srcElement.id);
-        //alert("Ohh .. you clicked on " + x);
-    }
-    
-    </script>
 
 </body>
 </html>

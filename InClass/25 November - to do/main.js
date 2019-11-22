@@ -45,11 +45,19 @@ function BuildBox(line,col,colorOfBox)
     // start building the onClick event for each box
     // it should result in a string like:
     // onclick="myBoxWasClicked('green');"
-    result += ' onclick="myBoxWasClicked(';
-    result += "'"+idOfThisBox + "');";
+    result += ' onclick="myBoxWasClicked();"';
     result += '"'; // end of the onClick event
 
     // finish the HTML tag
     result += '></div>';
     return result;
+}
+
+function myBoxWasClicked()
+{
+    var myElement = event.srcElement;
+    myElement.classList.add("bombBox");
+    //alert(event.srcElement.id);
+    // check THIS 
+    // https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button
 }
