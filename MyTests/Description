@@ -1,0 +1,5 @@
+Find the number in the end of a string and increase it by one:
+
+add1('aaaa1')='aaaa2'
+add1('aaaa001')='aaaa002'
+add1('aaaa0099')='aaaa0100'
