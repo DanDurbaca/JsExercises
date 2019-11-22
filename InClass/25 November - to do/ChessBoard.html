@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Chess board</title>
+    <style>
+        .box {
+            height: 50px;
+            width: 50px;
+            display: inline-block;
+        }
+        .yellowBox{
+            background-color: yellow;
+        }
+        .greenBox{
+            background-color: green;
+        }
+
+        .redBox{
+            background-color: red;
+        }
+    </style>
+
+    
+</head>
+<body>
+    <div id="123" class="box yellowBox" onclick="myBoxWasClicked('123');">
+        </div>
+    <div id="333" class="box greenBox" onclick="myBoxWasClicked('333');">
+        </div>
+        
+    <div id="container">
+    </div>
+
+    <script src='main.js'></script> 
+    <script>
+
+
+    function myBoxWasClicked(givenId)
+    {
+        
+        var myElement = document.getElementById(givenId);
+        myElement.className = "box redBox";
+        alert(event.srcElement.id);
+        //alert("Ohh .. you clicked on " + x);
+    }
+    
+    </script>
+
+</body>
+</html>
+
