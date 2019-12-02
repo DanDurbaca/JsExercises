@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        .oneButton {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Result: <input id="theResult"></div>
+    <div>
+        <div class="oneButton" onclick="someButtonClicked(1);">1</div>
+        <div class="oneButton" onclick="someButtonClicked(2);">2</div>
+        <div class="oneButton" onclick="someButtonClicked(3);">3</div>
+    </div>
+    <div>
+        <div class="oneButton" onclick="someButtonClicked(4);">4</div>
+        <div class="oneButton" onclick="someButtonClicked(5);">5</div>
+        <div class="oneButton" onclick="someButtonClicked(6);">6</div>
+    </div>
+    <div>
+        <div class="oneButton" onclick="someButtonClicked(7);">7</div>
+        <div class="oneButton" onclick="someButtonClicked(8);">8</div>
+        <div class="oneButton" onclick="someButtonClicked(9);">9</div>
+    </div>
+    <div>
+        <div class="oneButton" onclick="someButtonClicked(0);">0</div>
+    </div>
+</body>
+<script>
+    var myWritingElement = document.getElementById("theResult");
+    //myWritingElement
+
+    function someButtonClicked(x)
+    {
+        //alert("You clicked on " + x);
+        document.getElementById("theResult").value+=x;
+    }
+    
+</script>
+</html>
