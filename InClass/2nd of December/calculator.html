@@ -14,38 +14,78 @@
             width: 50px;
             height: 50px;
         }
+        .turnOn{
+            background-color: aqua;
+        }
     </style>
 </head>
 
 <body>
-    <div>Result: <input id="theResult"></div>
+    <div>Result: <input id="theResult" placeholder="0"></div>
     <div>
-        <div class="oneButton" onclick="someButtonClicked(1);">1</div>
-        <div class="oneButton" onclick="someButtonClicked(2);">2</div>
-        <div class="oneButton" onclick="someButtonClicked(3);">3</div>
+        <div class="oneButton" onclick="someDigitClicked(1);">1</div>
+        <div class="oneButton" onclick="someDigitClicked(2);">2</div>
+        <div class="oneButton" onclick="someDigitClicked(3);">3</div>
     </div>
     <div>
-        <div class="oneButton" onclick="someButtonClicked(4);">4</div>
-        <div class="oneButton" onclick="someButtonClicked(5);">5</div>
-        <div class="oneButton" onclick="someButtonClicked(6);">6</div>
+        <div class="oneButton" onclick="someDigitClicked(4);">4</div>
+        <div class="oneButton" onclick="someDigitClicked(5);">5</div>
+        <div class="oneButton" onclick="someDigitClicked(6);">6</div>
     </div>
     <div>
-        <div class="oneButton" onclick="someButtonClicked(7);">7</div>
-        <div class="oneButton" onclick="someButtonClicked(8);">8</div>
-        <div class="oneButton" onclick="someButtonClicked(9);">9</div>
+        <div class="oneButton" onclick="someDigitClicked(7);">7</div>
+        <div class="oneButton" onclick="someDigitClicked(8);">8</div>
+        <div class="oneButton" onclick="someDigitClicked(9);">9</div>
     </div>
     <div>
-        <div class="oneButton" onclick="someButtonClicked(0);">0</div>
+        <div class="oneButton" onclick="someDigitClicked(0);">0</div>
+    </div>
+
+    <div>
+        <div class="oneButton" onclick="reset();">Clear</div>
+        <div class="oneButton" id="plus" onclick="plus();">+</div>
     </div>
 </body>
 <script>
-    var myWritingElement = document.getElementById("theResult");
-    //myWritingElement
 
-    function someButtonClicked(x)
+    var cache=0; 
+
+
+    function someDigitClicked(x)
     {
-        //alert("You clicked on " + x);
-        document.getElementById("theResult").value+=x;
+        // TWO OPTIONS for finding out that the + was pressed OR NOT:
+        /*
+        1. Get the + button, check its classname and see if it contains 
+        the class turnON
+        */
+        if (document.getElementById("plus").classList.contains("turnOn"))
+        {
+            //alert("New number starting");
+            document.getElementById("plus").classList.remove("turnOn");
+            cache = document.getElementById("theResult").value;
+            document.getElementById("theResult").value ="";
+        }
+
+        
+        
+        document.getElementById("theResult").value +=x;
+    }
+
+    function reset()
+    {
+        document.getElementById("theResult").value = "";
+        cache = 0;
+        document.getElementById("plus").classList.remove("turnOn");
+    }
+
+    function plus()
+    {
+        var result = Number(document.getElementById("theResult").value);
+        result += Number(cache);
+        document.getElementById("theResult").value = result;
+
+        document.getElementById("plus").classList.add("turnOn");
+
     }
     
 </script>
