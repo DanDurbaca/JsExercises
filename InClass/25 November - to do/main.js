@@ -1,51 +1,57 @@
 
-function buildBoard(sizeOfBoard)
+function buildHTMLBoard(sizeOfBoard)
 {
     var myHtmlItem = document.getElementById("container");
-    var result ="";
-
     for (lines = 0; lines <sizeOfBoard;lines++)
     {
-        result = result + "<div>";
+        newRow = document.createElement("div");
         for(i=0;i<sizeOfBoard;i++)
         {
-            if ((lines+i)%2===1)
-            {
-                result = result + BuildBox(lines,i,"greenBox");
-            }
-            else
-            {
-                result = result + BuildBox(lines,i,"yellowBox");   
-            }
+            newElement = document.createElement("div");
+            newElement.classList.add("box");
+            newElement.classList.add("yellowBox");
+            newElement.id = "myBox_" + lines + '-' + i;
+            newElement.address_line = lines;
+            newElement.address_column = i;
+            newElement.addEventListener("click",myBoxWasClicked);
+            newRow.appendChild(newElement);
         }
-        result = result + "</div>";
+        myHtmlItem.appendChild(newRow);
     }
-    myHtmlItem.innerHTML = result;
-}
-
-
-
-function BuildBox(line,col,colorOfBox)
-{   
-    var idOfThisBox = "myBox_" + line + '-' + col;
-    var result='<div id="'; // add the id of the box
-    result += idOfThisBox; // finish adding the id
-    result += '" class="box ' + colorOfBox + '"'; // add the classes
-    // start building the onClick event for each box
-    // it should result in a string like:
-    // onclick="myBoxWasClicked('green');"
-    result += ' onclick="myBoxWasClicked();"';
-    result += '"'; // end of the onClick event
-
-    // finish the HTML tag
-    result += '></div>';
-    return result;
 }
 
 function myBoxWasClicked()
 {
     var myElement = event.srcElement;
-    myElement.classList.add("bombBox");
+    //myElement.classList.add("bombBox");
+    //alert(myElement.address_line);
+    var bombsAround = 0;
+    if (myElement.address_line-1>=0)
+        bombsAround+= board[myElement.address_line-1][myElement.address_column];
+
+    if ((myElement.address_line-1>=0) && (myElement.address_column-1>=0))
+        bombsAround+= board[myElement.address_line-1][myElement.address_column-1];
+
+    if ((myElement.address_line-1>=0) && (myElement.address_column+1<nSize))
+        bombsAround+= board[myElement.address_line-1][myElement.address_column+1];
+
+    if (myElement.address_column+1<nSize)
+        bombsAround+= board[myElement.address_line][myElement.address_column+1];
+
+    if (myElement.address_column-1>=0)
+        bombsAround+= board[myElement.address_line][myElement.address_column-1];
+
+    if (myElement.address_line+1<nSize)
+        bombsAround+= board[myElement.address_line+1][myElement.address_column];
+
+    if ((myElement.address_line+1<nSize)&&(myElement.address_column-1>0))
+        bombsAround+= board[myElement.address_line+1][myElement.address_column-1];
+
+    if ((myElement.address_line+1<nSize)&&(myElement.address_column+1<nSize))
+        bombsAround+= board[myElement.address_line+1][myElement.address_column+1];
+    
+    myElement.innerHTML = bombsAround;
+    //alert(event.srcElement.id);
     //alert(event.srcElement.id);
     // check THIS 
     // https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button
@@ -54,7 +60,6 @@ function myBoxWasClicked()
 function generateBoard(sizeOfBoard)
 {
     var localBoard = new Array(sizeOfBoard);
-
     for (var i = 0; i < sizeOfBoard; i++) 
     {
         localBoard[i] = new Array(sizeOfBoard);
@@ -80,8 +85,7 @@ function addBombs(numBombs)
 
 var nSize = 10;
 var board = generateBoard(nSize, 10);
-
-buildBoard(nSize);
+buildHTMLBoard(nSize);
 
 
 console.log(board[2]);
