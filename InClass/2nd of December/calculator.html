@@ -7,7 +7,7 @@
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    
     <style>
         .oneButton {
             display: inline-block;
@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <div>Result: <input id="theResult" placeholder="0"></div>
+    <div>Result: <div id="memory"></div> <input id="theResult" placeholder="0"></div>
     <div>
         <div class="oneButton" onclick="someDigitClicked(1);">1</div>
         <div class="oneButton" onclick="someDigitClicked(2);">2</div>
@@ -44,49 +44,10 @@
     <div>
         <div class="oneButton" onclick="reset();">Clear</div>
         <div class="oneButton" id="plus" onclick="plus();">+</div>
+        <div class="oneButton" id="minus" onclick="minus();">-</div>
     </div>
-</body>
-<script>
 
-    var cache=0; 
-
-
-    function someDigitClicked(x)
-    {
-        // TWO OPTIONS for finding out that the + was pressed OR NOT:
-        /*
-        1. Get the + button, check its classname and see if it contains 
-        the class turnON
-        */
-        if (document.getElementById("plus").classList.contains("turnOn"))
-        {
-            //alert("New number starting");
-            document.getElementById("plus").classList.remove("turnOn");
-            cache = document.getElementById("theResult").value;
-            document.getElementById("theResult").value ="";
-        }
-
-        
-        
-        document.getElementById("theResult").value +=x;
-    }
-
-    function reset()
-    {
-        document.getElementById("theResult").value = "";
-        cache = 0;
-        document.getElementById("plus").classList.remove("turnOn");
-    }
-
-    function plus()
-    {
-        var result = Number(document.getElementById("theResult").value);
-        result += Number(cache);
-        document.getElementById("theResult").value = result;
-
-        document.getElementById("plus").classList.add("turnOn");
-
-    }
     
-</script>
+</body>
+<script src='main.js'></script>
 </html>

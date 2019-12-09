@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Launch Chrome against localhost",
             //"file": "${workspaceFolder}/MyTests/StringsProblem/start.html",
-            "file": "${workspaceFolder}/InClass/2nd of December/calculator.html",
+            "file": "${workspaceFolder}/InClass/9th of December/events.html",
             "webRoot": "${workspaceFolder}"
         }
     ]
