@@ -10,8 +10,8 @@
             "name": "Launch Chrome against localhost",
             //"file": "${workspaceFolder}/MyTests/StringsProblem/start.html",
             //"file": "${workspaceFolder}/InClass/9th of December/events.html",
-            //"file": "${workspaceFolder}/InClass/25 November - to do/ChessBoard.html",
-            "file": "${workspaceFolder}/InClass/2nd of December/calculator.html",
+            "file": "${workspaceFolder}/InClass/25 November - to do/ChessBoard.html",
+            //"file": "${workspaceFolder}/InClass/2nd of December/calculator.html",
             "webRoot": "${workspaceFolder}"
         }
     ]

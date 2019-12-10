@@ -8,6 +8,7 @@ function buildHTMLBoard(sizeOfBoard)
         for(i=0;i<sizeOfBoard;i++)
         {
             newElement = document.createElement("div");
+            
             newElement.classList.add("box");
             newElement.classList.add("yellowBox");
             newElement.id = "myBox_" + lines + '-' + i;
@@ -23,8 +24,6 @@ function buildHTMLBoard(sizeOfBoard)
 function myBoxWasClicked()
 {
     var myElement = event.srcElement;
-    //myElement.classList.add("bombBox");
-    //alert(myElement.address_line);
     var bombsAround = 0;
     if (myElement.address_line-1>=0)
         bombsAround+= board[myElement.address_line-1][myElement.address_column];
@@ -44,7 +43,7 @@ function myBoxWasClicked()
     if (myElement.address_line+1<nSize)
         bombsAround+= board[myElement.address_line+1][myElement.address_column];
 
-    if ((myElement.address_line+1<nSize)&&(myElement.address_column-1>0))
+    if ((myElement.address_line+1<nSize)&&(myElement.address_column-1>=0))
         bombsAround+= board[myElement.address_line+1][myElement.address_column-1];
 
     if ((myElement.address_line+1<nSize)&&(myElement.address_column+1<nSize))
