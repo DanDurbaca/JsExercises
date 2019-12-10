@@ -39,15 +39,17 @@
     </div>
     <div>
         <div class="oneButton" onclick="someDigitClicked(0);">0</div>
+        <div class="oneButton" id="equals" onclick="doSomeOperation('equals');">=</div>
     </div>
 
     <div>
-        <div class="oneButton" onclick="reset();">Clear</div>
-        <div class="oneButton" id="plus" onclick="plus();">+</div>
-        <div class="oneButton" id="minus" onclick="minus();">-</div>
+        <div class="oneButton" onclick="clearAll();">Clear</div>
+        <div class="oneButton" id="plus"  onclick="doSomeOperation('plus',doPlus);">+</div>
+        <div class="oneButton" id="minus" onclick="doSomeOperation('minus',doMinus);">-</div>
     </div>
 
-    
+
+<script src="main.js"></script>
 </body>
-<script src='main.js'></script>
+
 </html>

@@ -1,10 +1,7 @@
 
 var cache = null;
+lastOperation = null;
 
-function addToMemory(someThing)
-{
-    document.getElementById("memory").innerHTML = someThing;
-}
 
 
 function someDigitClicked(x) {
@@ -17,46 +14,63 @@ function someDigitClicked(x) {
         ||
         document.getElementById("minus").classList.contains("turnOn")
     ) {
+        if (document.getElementById("plus").classList.contains("turnOn"))
+            lastOperation = "plus";
+        if (document.getElementById("minus").classList.contains("turnOn"))
+            lastOperation = "minus";
         resetDisplay();
-        cache = document.getElementById("theResult").value;
-        addToMemory(cache);
+        cache = Number(document.getElementById("theResult").value);
         document.getElementById("theResult").value = "";
     }
     
     document.getElementById("theResult").value += x;
 }
 
-function reset() {
+function clearAll() {
     document.getElementById("theResult").value = "";
     cache = null;
-    addToMemory(cache);
-
     resetDisplay();
 }
 
-function plus() {
-    var result = Number(document.getElementById("theResult").value);
-    result += Number(cache);
-    document.getElementById("theResult").value = result;
+function doPlus(a,b)
+{return a+b;}
 
-    resetDisplay();
-    document.getElementById("plus").classList.add("turnOn");
-}
+function doMinus(a,b)
+{return a-b;}
 
-function minus() {
-    if (cache != null) {
+function doNothing(a,b)
+{return a;}
+
+function doSomeOperation(objectId,whatToDo)
+{
+    if (cache != null) 
+    {
+        if (objectId=="equals")
+        {
+            switch (lastOperation)
+            {
+            case "plus":
+                whatToDo = doPlus;
+                break;
+            case "minus":
+                whatToDo = doMinus;
+                break;
+            default:
+                whatToDo = doNothing;
+            }
+        }
         var result = Number(document.getElementById("theResult").value);
-        result = cache - result;
+        result = whatToDo(cache,result);
         document.getElementById("theResult").value = result;
-        cache = result;
-        addToMemory(cache);
-
+        cache = null;
+        lastOperation = objectId;
     }
     resetDisplay();
-    document.getElementById("minus").classList.add("turnOn");
+    document.getElementById(objectId).classList.add("turnOn");
 }
 
 function resetDisplay() {
+    document.getElementById("equals").classList.remove("turnOn");
     document.getElementById("plus").classList.remove("turnOn");
     document.getElementById("minus").classList.remove("turnOn");
 }
