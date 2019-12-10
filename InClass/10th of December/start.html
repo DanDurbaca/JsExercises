@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        .box {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+        }
+
+        .Red {
+            background-color: red;
+        }
+
+        .Blue {
+            background-color: blue;
+        }
+
+        .Green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="NumRows">
+    <input id="NumColumns">
+    <select id="mySelect">
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
+        <option value="Green">Green</option>
+    </select>
+    <button onclick="DoSomething();">Click here</button>
+    <div id="container"></div>
+</body>
+<script>
+    function DoSomething() {
+        var colorSelect = document.getElementById("mySelect");
+
+        var numRows = document.getElementById("NumRows").value;
+
+        var numColumns = document.getElementById("NumColumns").value;
+
+        var targetElement = document.getElementById("container");
+
+        targetElement.innerHTML = "";
+
+
+        for (i = 0; i < numRows; i++) {
+            var newRow = document.createElement("div");
+            for (j = 0; j < numColumns; j++) {
+                var newElem = document.createElement("div");
+                newElem.classList.add("box");
+                newElem.classList.add(colorSelect.value);
+                newRow.appendChild(newElem);
+            }
+            targetElement.appendChild(newRow);
+        }
+    }
+</script>
+
+</html>
