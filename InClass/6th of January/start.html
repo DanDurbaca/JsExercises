@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        .buttonRegular {
+            display: inline-block;
+            border: solid green;
+            width: 100px;
+            height: 50px;
+        }
+        
+        .pressedButton {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    Seconds elapsed:
+    <div id="myClock">60</div>
+    <div class="buttonRegular pressedButton" onclick="buttonPressed(this);">Stop</div>
+    <div class="buttonRegular" onclick="buttonPressed(this);">Up</div>
+    <div class="buttonRegular" onclick="buttonPressed(this);">Down</div>
+</body>
+
+
+</html>
