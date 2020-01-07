@@ -2,6 +2,10 @@
 
 
 var clockRunning = null;
+var currentButtonPressed = 0;
+// 0 = STOP
+// 1 = Up (or clock +)
+// 2 = Down (or clock -)
 
 
 function changeClock() {
@@ -10,16 +14,16 @@ function changeClock() {
 
     let pressedButtons = document.getElementsByClassName("pressedButton");
     if (pressedButtons.length == 1) {
-        if (pressedButtons[0].innerHTML == "Up") {
+        if (currentButtonPressed == 1) {
             secondsCount++; // increase the seconds
         }
 
-        if (pressedButtons[0].innerHTML == "Down") {
+        if (currentButtonPressed == 2) {
             secondsCount--; // increase the seconds
         }
         divElement.innerHTML = secondsCount;
 
-        if ((pressedButtons[0].innerHTML == "Up") || (pressedButtons[0].innerHTML == "Down")) {
+        if (currentButtonPressed >= 1) {
             clockRunning = setTimeout(changeClock, 1000);
         } else {
             if (clockRunning != null) {
@@ -31,15 +35,18 @@ function changeClock() {
 }
 
 
-function buttonPressed(elementPressed) {
-    let allButtons = document.getElementsByClassName("buttonRegular");
-    for (let i = 0; i < allButtons.length; i++) {
-        allButtons[i].classList.remove("pressedButton");
+function buttonPressed(elementPressed, currentButtonParameter) {
+    if (!elementPressed.classList.contains("pressedButton")) {
+        currentButtonPressed = currentButtonParameter;
+        let allButtons = document.getElementsByClassName("buttonRegular");
+        for (let i = 0; i < allButtons.length; i++) {
+            allButtons[i].classList.remove("pressedButton");
+        }
+        elementPressed.classList.add("pressedButton");
+        if (clockRunning != null) {
+            clearTimeout(clockRunning);
+            clockRunning = null;
+        }
+        changeClock();
     }
-    elementPressed.classList.add("pressedButton");
-    if (clockRunning != null) {
-        clearTimeout(clockRunning);
-        clockRunning = null;
-    }
-    changeClock();
 }
