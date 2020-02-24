@@ -14,8 +14,8 @@
             //"file": "${workspaceFolder}/InClass/16th of December/start.html",
             //"file": "${workspaceFolder}/InClass/6th of January/start.html",
             //"file": "${workspaceFolder}/InClass/2nd of December/calculator.html",
-            "file": "${workspaceFolder}/InClass/13th of January/cgl.html",
-            "webRoot": "${workspaceFolder}"
+            "file": "${workspaceFolder}/Semester 2/24th of February/home.html"
+            //"webRoot": "${workspaceFolder}"
         }
     ]
 }
