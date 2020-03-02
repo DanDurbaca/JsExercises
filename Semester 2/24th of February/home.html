@@ -6,7 +6,22 @@
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    
+    <style>
+        #box{
+            width:100px;
+            height: 100px;
+            border: solid 2px;
+        }
+        .redColor{
+            background-color: red;
+        }
+        .yellowColor{
+            background-color: yellow;
+        }
+        .blueColor{
+            background-color: blue;
+        }
+    </style>
 </head>
 <body>
 
@@ -17,6 +32,18 @@
 <select id="cars">
     <option>This is something</option>
 </select>
+
+<select id="colors" onchange="selectChanged();">
+    <option>Please select a color:</option>
+    <option value="redColor">red</option>
+    <option value="yellowColor">yellow</option>
+    <option value="blueColor">blue</option>
+</select>
+
+
+<div id="box" class="">
+
+</div>
 
 
 <script src='main.js'></script>
