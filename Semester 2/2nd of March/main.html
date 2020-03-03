@@ -15,19 +15,16 @@
         .hidden{
             display: none;
         }
+
+        .city{
+            width:10px;
+            height:10px;
+            transition: width 10s, height 10s;
+        }
     </style>
 </head>
 <body>
-    <h2>
-    This is a project where we want to build select boxes 
-    that are linked one to another.
-    </h2>
 
-    <h2>
-    We would like to have a list of countries for a select box
-    and, depending on what the user has selected as a country,
-    we should display cities in a second select box.
-    </h2>
 
     <select id="country" onchange="CountryChanged();">
     <option>Please choose a country:</option>
@@ -40,7 +37,8 @@
     <select id="cities" class="hidden" onchange="CityChanged();">
     </select>
 
-    <img id="currentImage" src="" class="hidden">
+    <img id="currentImage" src="" class="hidden city">
+    <button onclick="MakeItBigger();">Enlarge</button>
 
     
 </body>

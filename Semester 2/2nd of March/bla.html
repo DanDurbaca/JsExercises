@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+      .ship {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        left: 0px;
+        transition: left 1s;
+      }
+    </style>
+    <script>
+      document.onkeydown = function() {
+        let myShip = document.getElementById("myShip");
+        switch (window.event.keyCode) {
+          case 37:
+            let oldPos = myShip.style.left;
+            let oldPosIntVal = parseInt(oldPos, 10);
+            myShip.style.left = oldPosIntVal + 100 + "px";
+            break;
+          case 39:
+            myShip.style.left = "100px";
+            break;
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <img id="myShip" class="ship" src="ship.jpg" alt="myShip" />
+  </body>
+</html>
