@@ -11,6 +11,17 @@
     div{
       border:2px 
     }
+    #whatever{
+      background-color: yellow;
+      transition: background-color 5s;
+    }
+    #ColoredBox{
+      border: black solid 1px;
+      display: inline-block;
+      width: 500px;
+      height: 500px;
+      transition: background-color 5s;
+    }
   </style>
 </head>
 <body>
@@ -37,19 +48,21 @@
 <input type="radio" id="notspecified" name="gender" value="notspecified">
 <label for="notspecified">Not specified</label><br>
 
+<div id="whatever" class="bla">
+Something is inside this div
+</div>
 
-<!--
-<p>Marital status</p>
-
-  <input type="radio" id="married" name="maritalStatus" value="married">
-  <label for="married">Married</label><br>
-  
-  <input type="radio" id="notMarried" name="maritalStatus" value="notMarried">
-  <label for="notMarried">Not married</label><br>
-</form>
--->
 
   <button type="button" onclick="ReadAndAlertRadio();">Read the gender and alert</button>
+
+
+  <div id ="ColoredBox" class="bla" onclick="StartChangingColors();">
+  </div>
+
+  <p  class="bla" >
+    This is a paragraph that is beeing colored
+  </p>
+  
 </body>
 </html>
 
