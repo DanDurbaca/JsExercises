@@ -1,0 +1,9 @@
+Task description:
+
+Create an HTML page with a button and a div.
+
+When the button is pressed once, we display a message in the div.
+
+The second time the button is pressed, we display a COUNT of the number of times
+the user have pressed the button in the div, next to the message that we initially added 
+the first time we pressed the button.
